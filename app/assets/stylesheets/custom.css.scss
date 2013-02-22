@@ -98,7 +98,7 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 130px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
@@ -124,7 +124,7 @@ footer {
 
 /* sidebar */
 aside {
-
+  
  
   section {
     padding: 10px, 0;
@@ -149,13 +149,11 @@ aside {
 }
 
 
-// temporarily disabled
-/* 
 .gravatar {
   float: left;
   margin-right: 10px;
 }
-*/
+
 
 /* forms */
 
@@ -183,3 +181,4 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
