@@ -98,7 +98,11 @@ p {
 /* footer */
 
 footer {
+<<<<<<< HEAD
   margin-top: $footer_margin_top;
+=======
+  margin-top: 130px;
+>>>>>>> sign-in-out
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
@@ -124,7 +128,7 @@ footer {
 
 /* sidebar */
 aside {
-
+  
  
   section {
     padding: 10px, 0;
@@ -149,8 +153,11 @@ aside {
 }
 
 
+<<<<<<< HEAD
 // temporarily disabled
 
+=======
+>>>>>>> sign-in-out
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -183,3 +190,4 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
