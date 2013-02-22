@@ -3,7 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-
+$footer_margin_top: 150px;
 
 /* mixins */
 
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  padding-top: 160px;
+  padding-top: 100px;
 }
 
 section {
@@ -98,7 +98,7 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: $footer_margin_top;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;
@@ -150,12 +150,12 @@ aside {
 
 
 // temporarily disabled
-/* 
+
 .gravatar {
   float: left;
   margin-right: 10px;
 }
-*/
+
 
 /* forms */
 
