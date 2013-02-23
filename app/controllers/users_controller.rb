@@ -15,6 +15,7 @@ class UsersController < ApplicationController
        sign_in @user
        flash[:success] = "welcome to the Sample App!"
        redirect_to @user
+       #redirect_to action: 'show', id: @user.id
     else
       render 'new'
     end
