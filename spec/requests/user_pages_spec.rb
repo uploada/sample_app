@@ -41,7 +41,7 @@ describe "User pages" do
         fill_in "Name",		with: "uploada"
         fill_in "Email", 	with: "1loadaup@gmail.com"
 	fill_in "Password", 	with: "aaaaaa"
-	fill_in "Confirmation",	with: "aaaaaa"
+	fill_in "Confirm Password",	with: "aaaaaa"
       end
      
       it "should create a user" do
@@ -132,6 +132,7 @@ describe "User pages" do
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
+          sign_out
           sign_in admin
           visit users_path
         end 
@@ -144,5 +145,41 @@ describe "User pages" do
         it { should_not have_link('delete', href: user_path(admin)) }
       end
     end
+  end
+
+  describe "signing in a new user while already signed in" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before { sign_in user }
+ 
+    before {  get new_user_path }
+    specify { response.should redirect_to(root_path) }
+  end
+   
+  describe "creating a user while already signed in" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user }
+
+    before { post users_path }
+    specify { response.should redirect_to(root_path) }
+  end
+
+  describe "signing out" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user }
+    before { sign_out }
+    specify { response.should redirect_to(root_path) }
+    it { should have_content('Sample App') }    
+  end
+
+  describe "visiting signin_path while being signed in" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      sign_in user
+      visit signin_path
+    end
+    #it "should redirect to root_path" do
+    #  should_not have_selector('title', text: full_title('Sign in'))
+    #end
   end
 end

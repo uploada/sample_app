@@ -29,6 +29,7 @@ describe User do
     end
 
     it { should be_admin }
+
   end
 
 
