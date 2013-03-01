@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation # don't need any more :remember_token
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+
   #before_save { |user| user.email = email.downcase}
   before_save { email.downcase! }
   before_save :create_remember_token
@@ -24,6 +26,13 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: {case_sensitive: false} , format: {with: VALID_EMAIL_REGEX}
+
+
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+    #microposts
+  end
 
   private
     

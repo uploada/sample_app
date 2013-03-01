@@ -10,6 +10,6 @@ def sign_in(user)
 end
 
 def sign_out
-  cookies.delete(:rememer_token)
+  #cookies.delete(:rememer_token)
   delete signout_path
 end
