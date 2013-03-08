@@ -1,0 +1,27 @@
+class RelationshipsController < ApplicationController
+  before_filter :signed_in_user  
+
+
+  def create
+    @user= User.find_by_id(params[:relationship][:followed_id])
+    current_user.follow!(@user)
+    #redirect_to @user
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
+
+  def destroy
+    #relation = Relationship.find_by_id(params[:id])
+    #@user = User.find_by_id(relation.followed_id)
+    @user = Relationship.find(params[:id]).followed
+    current_user.unfollow!(@user)
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+    #redirect_to @user
+  end
+  
+end
